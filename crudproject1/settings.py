@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'enroll.middleware.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'crudproject1.urls'
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'crudproject1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'python_crud',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -123,3 +128,18 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
+
+LOGIN_REDIRECT_URL = '/home/'
+
+LOGIN_URL = '/login/'
+
+LOGIN_EXEMPT_URLS = (
+
+    r'^logout/$',
+    r'^staticpage/$',
+    r'^register/$',
+    r'ghg',
+    r'^delete/<int:id>/',
+    r'^<int:id>/',
+    r'^change_password/'
+)

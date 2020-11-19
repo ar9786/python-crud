@@ -2,22 +2,106 @@
 {% load static %}
 <html lang="en">
 <head>
-  <title>Student Crud</title>
+  {% block head %}
+  <title></title>
+  {% endblock %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
-  <script src="{% static '/jquery.min.js' %}"></script>
-  <script src="{% static '/js/bootstrap.min.js' %}"></script>
-</head>
-<body>
-
-<div class="jumbotron text-center">
-  <h2 class="text-center alert alert-danger">Function Based View ModelForm CRUD Project </h1>
-</div>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1" name="viewport">
+  <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static '/css/style.css' %}" rel="stylesheet">
+  <link href="{% static '/css/media.css' %}" rel="stylesheet">
+  <link rel="icon" href="{% static '/images/logo12.ico' %}">
   
-{% block content %}
+</head>
+<body class="scrollerNew">    
+  <!-- header starts here -->
+  <header class="header" id="header">
+      <aside class="left_sidebar">
+          <div class="left_inner_data scrollerNew">
+              <div class="logo">
+                  <a href="javascript:void(a);" class="glogo_text color_white fz30">ST</a>
+                  <a href="javascript:void(0);" class="glogo">
+                      <img src="{% static '/images/logo.png' %}" alt="" class="img-fluid p-3">
+                  </a>
+              </div>
+              <!-- <div class="profile_info">
+                  <div class="row">
+                      <div class="col-4 col-md-3">
+                          <div class="col-selector">
+                             <img src="http://via.placeholder.com/30x30" alt="" class="left_profile_img"> 
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="col-selector">
+                              <span class="">Welcome, <strong>Admin</strong></span>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
+              <div class="sidemenu_listing">
+                  <ul class="ul_nostyle main_menu_list">
+                      <li>
+                          <a class="clearfix active" href="" title="Dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                      </li>
+                      <li>
+                          <a class="clearfix" href="" title="Athletes"><i class="fa fa-users"></i> <span>Athletes</span></a>
+                      </li>
+                      <li>
+                          <a class="clearfix" href="" title="Companies"><i class="fa fa-users"></i> <span>Sports Organisations</span></a>
+                      </li>
+                      <li>
+                          <a class="clearfix" href="" title="Newsletter"><i class="fa fa-envelope"></i> <span>Newsletter</span></a>
+                      </li>
+                      <li>
+                          <a class="clearfix" href="" title="BlogManagment"><i class="fa fa-rss"></i> <span>Blog Management</span></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </aside>
+      <div class="top_right_navs">
+          <div class="top_strip clearfix">
+              <div class="pull-left">
+                  <ul class="ul_nostyle list-inline">
+                      <li class="vam list-inline-item">
+                          <a href="javascript:void(0);" class="trigger_aside">
+                              <i class="fa fa-bars base_color"></i>
+                          </a>
+                      </li>
+                      <li class="vam list-inline-item">
+                          <a href="javascript:void();" class="d-block ml-3 fz18">
+                              <span class="base_color">Welcome, <strong>{% if user.is_authenticated %}
+                                <span class="font_bold vam">{{ user.get_username | capfirst }}</span>
+                                {% endif %}</strong></span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="pull-right">
+                  <div class="post_login_name clearfix">
+                      <ul class="ul_nostyle pull-right">
+                          <li>
+                              <a>
+                                  <img alt="" class="profile_thumbpic" src="{% static '/images/30x30.png' %}"> 
+                                  <a href="{% url 'logout' %}"><span class="font_bold vam">Logout <i class="fa fa-sign-out"></i></span></a>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  
+{% block content %} 
 {% endblock %}
-
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/popper.min.js' %}"></script> 
+<script src="{% static 'js/scroll.js' %}"></script>
+<script src="{% static '/js/manual.js' %}"></script>
 
 </body>
 </html>
