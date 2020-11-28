@@ -1,17 +1,38 @@
 
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h4>Update Student</h4>
-      <form action="" method="POST">
-        {%csrf_token%}
-        {{form.as_p}}
-        <input type="submit" class="btn btn-success" value="Update">
-      </form>
+<div class="right_sidebar">
+  <div class="right_content">
+    <div class="dashboard_contant pt-5 pb-5">
+      <div class="container">
+        <h2 class="text-uppercase mb-4 base_color">Dashboard</h2>
+        <div class="row">
+          <h4>Update Student</h4>
+          <form action="" method="POST">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
+
 {% endblock %}
+<!--
+<div class="right_sidebar">
+  <div class="right_content">
+    <div class="dashboard_contant pt-5 pb-5">
+      <div class="container">
+        <h2 class="text-uppercase mb-4 base_color">Dashboard</h2>
+        <div class="row">
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->

@@ -37,8 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'enroll'
+    'enroll',
+    'api',
+    'rest_framework',
 ]
+'''
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+     #   'rest_framework.permissions.DjangoModelPermissions'
+    ]
+}'''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +67,7 @@ ROOT_URLCONF = 'crudproject1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,7 +144,9 @@ LOGIN_REDIRECT_URL = '/home/'
 
 LOGIN_URL = '/login/'
 
-LOGIN_EXEMPT_URLS = (
+LOGIN_EXEMPT_URLS = ('home','addshow')
+
+'''LOGIN_EXEMPT_URLS = (
 
     r'^logout/$',
     r'^staticpage/$',
@@ -142,4 +155,4 @@ LOGIN_EXEMPT_URLS = (
     r'^delete/<int:id>/',
     r'^<int:id>/',
     r'^change_password/'
-)
+)'''

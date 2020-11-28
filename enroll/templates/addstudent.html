@@ -1,53 +1,61 @@
 
 {% extends 'base.html' %}
     {% block content %}
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <h4>Add Student</h4>
-          <form action="" method="POST">
-            {%csrf_token%}
-            {{form.as_p}}
-            <input type="submit" class="btn btn-success" value="Add">
-          </form>
-        </div>
-        <div class="col-sm-8">
-          <h4>Show Student</h4>
-          {% if stud %}
-          <div class="table-responsive">          
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for st in stud %}
-                <tr>
-                  <td>{{ forloop.counter }}</td>
-                  <td scope="row">{{ st.name }}</td>
-                  <td>{{ st.email }}</td>
-                  <td>{{ st.password }}</td>
-                  <td><a href="{% url 'updatedata' st.id %}">Edit</a></td>
-                  <form action="{% url 'deletedata' st.id %}" method="POST">
-                    {%csrf_token%}
-                    <td><input type="submit" value="Delete"></td>
-                  </form>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+    <div class="right_sidebar">
+      <div class="right_content">
+        <div class="dashboard_contant pt-5 pb-5">
+          <div class="container">
+            <h2 class="text-uppercase mb-4 base_color">Dashboard</h2>
+            <div class="row">
+              <div class="col-sm-4">
+                <h4>Add Student</h4>
+                <form action="" method="POST">
+                  {%csrf_token%}
+                  {{form.as_p}}
+                  <input type="submit" class="btn btn-success" value="Add">
+                </form>
+              </div>
+              <div class="col-sm-8">
+                <h4>Show Student</h4>
+                {% if stud %}
+                <div class="table-responsive">          
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for st in stud %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td scope="row">{{ st.name }}</td>
+                        <td>{{ st.email }}</td>
+                        <td>{{ st.password }}</td>
+                        <td><a href="{% url 'updatedata' st.id %}">Edit</a></td>
+                        <form action="{% url 'deletedata' st.id %}" method="POST">
+                          {%csrf_token%}
+                          <td><input type="submit" value="Delete"></td>
+                        </form>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
+          
+                {% else %}
+                  <h4> No result</h4>
+                {% endif %}
+              </div>
+              
             </div>
-
-          {% else %}
-            <h4> No result</h4>
-          {% endif %}
+          </div>
         </div>
       </div>
     </div>
   
-    {% endblock %}
+{% endblock %}

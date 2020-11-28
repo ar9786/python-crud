@@ -77,7 +77,7 @@ def delete_data(Request,id):
     if Request.method == 'POST':
         pi= User1.objects.get(pk=id)
         pi.delete()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/addshow')
 
 
 def logoutUser(Request):
