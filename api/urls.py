@@ -14,5 +14,6 @@ urlpatterns = [
     path('course-details-condt/',views.getData,name='course_details_condt'),
     path('gettoken/',TokenObtainPairView.as_view(),name='token_obtain_pair'),
     path('refresh-token/',TokenRefreshView.as_view(),name='token_refresh'),
-    path('verify-token/',TokenVerifyView.as_view(),name='token_verify')
+    path('verify-token/',TokenVerifyView.as_view(),name='token_verify'),
+    path('check-celery/',views.checkCelery,name='checkCelery')
 ]

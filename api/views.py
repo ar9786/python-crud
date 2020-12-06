@@ -14,6 +14,10 @@ from rest_framework.parsers import JSONParser
 
 from rest_framework.decorators import api_view
 
+from .task import *
+from django.core.mail import send_mail
+from .helper import *
+
 @api_view(['GET'])
 def getData(request):
     if request.method == 'GET':
@@ -21,6 +25,11 @@ def getData(request):
         serializer = CourseDetailsSerializer(courseobj, many=True)
         return Response(serializer.data)
 
+def checkCelery(request):
+    #sleepy.delay(10)
+    #send_mail_without_celery()
+    send_mail_task.delay(1)
+    return HttpResponse("Hi")
 
 class CourseList(APIView):
     def get(self, request):
